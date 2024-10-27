@@ -1,0 +1,15 @@
+@model Course
+
+@{
+    ViewData["Title"] = "Confirm Enrollment";
+}
+
+<h2>Enroll in @Model.Title</h2>
+<p>@Model.Description</p>
+<p><strong>Category:</strong> @Model.Category</p>
+<p><strong>Price:</strong> $@Model.Price</p>
+
+<form asp-action="EnrollConfirm" method="post">
+    <input type="hidden" name="courseId" value="@Model.CourseId" />
+    <button type="submit" class="btn btn-primary">Confirm Enrollment</button>
+</form>

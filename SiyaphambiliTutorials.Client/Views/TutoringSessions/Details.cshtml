@@ -1,0 +1,78 @@
+@model TutoringSessionDetailsViewModel
+@{
+    ViewData["Title"] = "Tutoring Session Details";
+}
+
+<style>
+    .session-details {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .session-details h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .session-details p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .booked-notice,
+    .fully-booked-notice {
+        color: red;
+        font-weight: bold;
+    }
+
+    .meeting-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="session-details">
+    <h2>@Model.Session.Title</h2>
+    <p>@Model.Session.Description</p>
+    <p><strong>Start:</strong> @Model.Session.StartTime</p>
+    <p><strong>End:</strong> @Model.Session.EndTime</p>
+    <p><strong>Spots Available:</strong> @Model.SpotsAvailable</p>
+
+    @if (Model.IsAlreadyBooked || User.IsInRole("Tutor"))
+    {
+        <p class="booked-notice">You are already booked for this session or are hosting it.</p>
+        
+        <div class="meeting-container">
+            <h4>Join the Session</h4>
+            <iframe
+                src="@Model.Session.MeetingLink"
+                allow="camera; microphone; fullscreen; display-capture"
+                style="width: 100%; height: 600px; border: 0;">
+            </iframe>
+        </div>
+    }
+    else if (Model.SpotsAvailable > 0)
+    {
+        <form asp-action="BookSession" method="post">
+            <input type="hidden" name="sessionId" value="@Model.Session.TutoringSessionId" />
+            <button type="submit" class="btn btn-primary">Book Now</button>
+        </form>
+    }
+    else
+    {
+        <p class="fully-booked-notice">This session is fully booked.</p>
+    }
+</div>

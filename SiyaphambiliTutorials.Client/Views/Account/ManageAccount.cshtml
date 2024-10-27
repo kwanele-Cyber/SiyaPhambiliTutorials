@@ -1,0 +1,91 @@
+@model ManageAccountViewModel
+
+@{
+    ViewData["Title"] = "Manage Account";
+}
+
+<div class="settings-container">
+    <div class="settings-header">
+        <h1>Manage Account</h1>
+        <div class="user-info">
+            <img src="avatar.png" alt="User Avatar" class="user-avatar">
+            <span>@Model.FirstName @Model.LastName</span>
+        </div>
+    </div>
+    <div class="tabs">
+        <button class="tab-button active" data-target="#general-content">General</button>
+        @if (Model.Role == UserRole.Tutor)
+        {
+            <button class="tab-button" data-target="#courses-content">Courses</button>
+        }
+        else if (Model.Role == UserRole.Student)
+        {
+            <button class="tab-button" data-target="#enrollments-content">Enrollments</button>
+        }
+        else if (Model.Role == UserRole.Administrator)
+        {
+            <button class="tab-button" data-target="#audit-logs-content">Audit Logs</button>
+        }
+    </div>
+    <div class="tab-content active" id="general-content">
+        <form asp-action="UpdateProfile" method="POST">
+            <input type="hidden" asp-for="Email" />
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" value="@Model.FirstName" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" value="@Model.LastName" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" value="@Model.Email" required readonly>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" value="@Model.PhoneNumber" required>
+
+            <button type="submit" class="save-btn">Save changes</button>
+        </form>
+    </div>
+    <!-- Role-specific tab contents -->
+    @if (Model.Role == UserRole.Tutor)
+    {
+        <div class="tab-content" id="courses-content" style="display: none;">
+            @foreach (var course in Model.Courses)
+            {
+                <p>@course.Title - @course.Description</p>
+            }
+        </div>
+    }
+    else if (Model.Role == UserRole.Student)
+    {
+        <div class="tab-content" id="enrollments-content" style="display: none;">
+            @foreach (var enrollment in Model.Enrollments)
+            {
+                <p>@enrollment.CourseTitle - Active: @enrollment.IsActive</p>
+            }
+        </div>
+    }
+    else if (Model.Role == UserRole.Administrator)
+    {
+        <div class="tab-content" id="audit-logs-content" style="display: none;">
+            @foreach (var log in Model.AuditLogs)
+            {
+                <p>@log.ActionDate - @log.Description</p>
+            }
+        </div>
+    }
+</div>
+
+<script>
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove 'active' class from all buttons and contents
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+
+        // Add 'active' class to clicked button and associated content
+        button.classList.add('active');
+        const contentToShow = document.querySelector(button.getAttribute('data-target'));
+        contentToShow.style.display = 'block';
+    });
+});
+</script>

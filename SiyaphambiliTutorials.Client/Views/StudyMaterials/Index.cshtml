@@ -1,0 +1,30 @@
+@model IEnumerable<StudyMaterialViewModel>
+@{
+    ViewData["Title"] = "Study Materials";
+}
+
+
+<h2>Study Materials</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var material in Model)
+        {
+            <tr>
+                <td>@material.Title</td>
+                <td>@material.Description</td>
+                <td>@material.Price</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@material.StudyMaterialId">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

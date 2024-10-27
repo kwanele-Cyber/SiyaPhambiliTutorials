@@ -1,0 +1,19 @@
+@model SiyaphambiliTutorials.Client.Models.ModuleContentViewModel
+@{
+    ViewData["Title"] = "Add Content";
+}
+
+<h2>Add Content to Module</h2>
+
+<form asp-action="AddContent" method="post">
+    <div>
+        <label for="contentType">Content Type</label>
+        <input type="text" id="contentType" name="ContentType" required />
+    </div>
+    <div>
+        <label for="contentUrl">Content URL</label>
+        <input type="text" id="contentUrl" name="ContentUrl" required />
+    </div>
+    <input type="hidden" name="CourseModuleId" value="@Model.CourseModuleId" />
+    <button type="submit">Add Content</button>
+</form>

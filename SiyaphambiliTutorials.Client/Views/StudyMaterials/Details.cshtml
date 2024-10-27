@@ -1,0 +1,20 @@
+@model StudyMaterialViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Model.Title</h2>
+<p>@Model.Description</p>
+<p><strong>Price:</strong> @Model.Price</p>
+
+@if (Model.IsPurchased)
+{
+    <p>You have already purchased this material. <a href="@Model.MaterialUrl">Access Material</a></p>
+}
+else
+{
+    <form asp-action="Purchase" method="post">
+        <input type="hidden" name="StudyMaterialId" value="@Model.StudyMaterialId" />
+        <button type="submit">Purchase Material</button>
+    </form>
+}

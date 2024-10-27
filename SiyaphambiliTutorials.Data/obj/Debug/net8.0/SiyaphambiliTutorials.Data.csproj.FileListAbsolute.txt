@@ -1,0 +1,14 @@
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\bin\Debug\net8.0\SiyaphambiliTutorials.Data.deps.json
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\bin\Debug\net8.0\SiyaphambiliTutorials.Data.runtimeconfig.json
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\bin\Debug\net8.0\SiyaphambiliTutorials.Data.dll
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\bin\Debug\net8.0\SiyaphambiliTutorials.Data.pdb
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.csproj.AssemblyReference.cache
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.AssemblyInfoInputs.cache
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.AssemblyInfo.cs
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.csproj.CoreCompileInputs.cache
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.dll
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\refint\SiyaphambiliTutorials.Data.dll
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.pdb
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\SiyaphambiliTutorials.Data.genruntimeconfig.cache
+C:\Users\cash1\Projects\ApplicationDevelopment\SiyaPhambiliTutorials\SiyaphambiliTutorials.Data\obj\Debug\net8.0\ref\SiyaphambiliTutorials.Data.dll

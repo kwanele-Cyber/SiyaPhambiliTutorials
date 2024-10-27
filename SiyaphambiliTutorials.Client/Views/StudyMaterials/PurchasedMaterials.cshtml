@@ -1,0 +1,22 @@
+@model IEnumerable<PurchasedMaterialViewModel>
+
+<h2>Your Purchased Materials</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Purchase Date</th>
+            <th>Access</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var material in Model)
+        {
+            <tr>
+                <td>@material.Title</td>
+                <td>@material.PurchaseDate</td>
+                <td><a href="@material.MaterialUrl">Access Material</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

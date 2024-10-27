@@ -1,0 +1,21 @@
+@model IEnumerable<TutoringSession>
+@{
+    ViewData["Title"] = "Manage My Sessions";
+}
+
+<h2>Manage My Sessions</h2>
+
+@foreach (var session in Model)
+{
+    <div class="session">
+        <h4>@session.Title</h4>
+        <p><strong>Description:</strong> @session.Description</p>
+        <p><strong>Start Time:</strong> @session.StartTime</p>
+        <p><strong>End Time:</strong> @session.EndTime</p>
+        <a href="@Url.Action("Details", "TutoringSessions", new { id = session.TutoringSessionId })" class="btn btn-info">View Details</a>
+        <form asp-action="Cancel" method="post">
+            <input type="hidden" name="id" value="@session.TutoringSessionId" />
+            <button type="submit" class="btn btn-danger">Cancel Session</button>
+        </form>
+    </div>
+}

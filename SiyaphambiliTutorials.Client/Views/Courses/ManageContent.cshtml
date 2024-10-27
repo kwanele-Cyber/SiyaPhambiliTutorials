@@ -1,0 +1,59 @@
+@model SiyaphambiliTutorials.Client.Models.CourseViewModel
+
+<h2>Manage Content for @Model.Title</h2>
+
+<div class="course-info">
+    <h3>Category: @Model.Category</h3>
+    <p>Level: @Model.Level | Price: @(Model.Price.HasValue ? Model.Price.Value.ToString("C") : "Free")</p>
+</div>
+
+<!-- Display existing modules and content -->
+<div class="modules-container">
+    @foreach(var module in Model.Modules)
+    {
+        <div class="module-card">
+            <h3>Module: @module.Title</h3>
+            <div class="module-contents">
+                @foreach(var content in module.ModuleContents)
+                {
+                    <div class="content-item">
+                        <span>@content.ContentType:</span> 
+                        <a href="@content.ContentUrl" target="_blank">@content.ContentUrl</a>
+                        <span>(@content.IsCompleted ? "Completed" : "Pending")</span>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Link to add new content -->
+<div class="add-content-link">
+    <a href="@Url.Action("AddContent", "Courses", new { courseId = Model.CourseId })" class="btn btn-primary">Add New Content</a>
+</div>
+
+<style>
+    .course-info {
+        margin-bottom: 20px;
+    }
+    .modules-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .module-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .module-contents {
+        margin-top: 10px;
+        padding-left: 15px;
+    }
+    .content-item {
+        margin-bottom: 10px;
+    }
+    .add-content-link {
+        margin-top: 20px;
+    }
+</style>
