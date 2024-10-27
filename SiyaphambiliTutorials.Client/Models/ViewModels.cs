@@ -180,6 +180,15 @@ namespace SiyaphambiliTutorials.Client.Models
         public int SpotsAvailable { get; set; }
     }
 
+    public class StudyMaterialViewModel
+    {
+        public int StudyMaterialId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string MaterialUrl { get; set; }
+        public bool IsPurchased { get; set; } // Indicates if the user has purchased this material
+    }
 
 
 }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SiyaphambiliTutorials.Client.Models;
 using SiyaphambiliTutorials.Data;
 using System;
 using System.Linq;
@@ -33,14 +34,29 @@ namespace SiyaphambiliTutorials.Controllers
         // GET: StudyMaterial Details
         public async Task<IActionResult> Details(int id)
         {
+            var userId = _userManager.GetUserId(User);
+
             var material = await _context.StudyMaterials
-                .Include(m => m.Tutor)
+                .Select(m => new StudyMaterialViewModel
+                {
+                    StudyMaterialId = m.StudyMaterialId,
+                    Title = m.Title,
+                    Description = m.Description,
+                    Price = m.Price,
+                    MaterialUrl = m.MaterialUrl,
+                    IsPurchased = _context.MaterialPurchases
+                                    .Any(p => p.StudyMaterialId == m.StudyMaterialId && p.StudentId == userId)
+                })
                 .FirstOrDefaultAsync(m => m.StudyMaterialId == id);
-            
-            if (material == null) return NotFound();
+
+            if (material == null)
+            {
+                return NotFound();
+            }
 
             return View(material);
         }
+
 
         // GET: Create StudyMaterial (For Tutors)
         [Authorize(Roles = "Tutor")]
